@@ -58,6 +58,11 @@ class PickerKeyboard extends Component {
     onCancel && onCancel()
   }
 
+  onBackdropPress = () => {
+    const { onBackdrop } = this.props
+    onBackdrop && onBackdrop()
+  }
+
   onSubmitPress = () => {
     const { onSubmit } = this.props
     const { value } = this.state
@@ -100,6 +105,7 @@ class PickerKeyboard extends Component {
         cancelKeyText={cancelKeyText}
         onCancelPress={this.onCancelPress}
         onSubmitPress={this.onSubmitPress}
+        onBackdropPress={this.onBackdropPress}
         submitKeyText={submitKeyText}
         visible={visible}
       >

@@ -21,6 +21,7 @@ export default {
   cancelKeyText: PropTypes.string,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
+  onBackdrop: PropTypes.func,
   onValueChange: PropTypes.func,
   options: PropTypes.array,
   submitKeyText: PropTypes.string,

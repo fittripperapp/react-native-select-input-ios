@@ -13,6 +13,7 @@ export default {
   cancelKeyText: PropTypes.string,
   onCancelPress: PropTypes.func.isRequired,
   onSubmitPress: PropTypes.func.isRequired,
+  onBackdropPress: PropTypes.func,
   submitKeyText: PropTypes.string,
   visible: PropTypes.bool.isRequired,
   children: PropTypes.element

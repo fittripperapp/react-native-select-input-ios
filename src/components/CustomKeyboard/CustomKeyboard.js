@@ -22,6 +22,11 @@ class CustomKeyboard extends Component {
     onCancelPress()
   }
 
+  onBackdropPress = () => {
+    const { onBackdropPress } = this.props
+    onBackdropPress && onBackdropPress()
+  }
+
   onSubmitPress = () => {
     const { onSubmitPress } = this.props
     onSubmitPress()
@@ -51,7 +56,7 @@ class CustomKeyboard extends Component {
           'landscape-right'
         ]}
       >
-        <TouchableWithoutFeedback onPress={this.onCancelPress.bind(this)}>
+        <TouchableWithoutFeedback onPress={this.onBackdropPress.bind(this)}>
           <View style={styles.container}>
             <View style={[styles.modal, { width }]}>
               <View style={[styles.buttonview, buttonsViewStyle, { width }]}>
