@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Dimensions, Picker } from 'react-native'
+import { Dimensions, Picker, Platform } from 'react-native'
 
 import CustomKeyboard from '../CustomKeyboard'
 
 import propTypes from './types.js'
 import styles from './styles.js'
+
+const actionDelay = Platform.OS === 'ios' ? 500 : 0;
+const hideDelay = Platform.OS === 'ios' ? 100 : 0;
 
 class PickerKeyboard extends Component {
   constructor(props) {
@@ -60,15 +63,25 @@ class PickerKeyboard extends Component {
 
   onBackdropPress = () => {
     const { onBackdrop } = this.props
-    onBackdrop && onBackdrop()
+    setTimeout(() => {
+      if (this.picker && this.picker.props) { 
+        onBackdrop && onBackdrop(this.picker.props.selectedValue)
+      }
+    }, actionDelay);
   }
 
   onSubmitPress = () => {
     const { onSubmit } = this.props
     const { value } = this.state
 
-    this.setVisible(false)
-    onSubmit && onSubmit(value)
+    setTimeout(() => {
+      if (this.picker && this.picker.props) { 
+        onSubmit && onSubmit(this.picker.props.selectedValue);
+      }
+      setTimeout(() => {
+        this.setVisible(false)
+      }, hideDelay);
+    }, actionDelay);
   }
 
   onValueChange = value => {
